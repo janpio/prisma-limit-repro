@@ -10,8 +10,8 @@ import { FieldShieldResolver, ObjectTypeShieldResolver } from "nexus-shield"
 
 declare global {
   interface NexusGenCustomOutputProperties<TypeName extends string> {
-    crud: NexusPrisma<TypeName, 'crud'>
     model: NexusPrisma<TypeName, 'model'>
+    crud: any
   }
 }
 
@@ -20,119 +20,14 @@ declare global {
 }
 
 export interface NexusGenInputs {
-  ImageCreateNestedOneWithoutPostInput: { // input type
-    connect?: NexusGenInputs['ImageWhereUniqueInput'] | null; // ImageWhereUniqueInput
-    connectOrCreate?: NexusGenInputs['ImageCreateOrConnectWithoutPostInput'] | null; // ImageCreateOrConnectWithoutPostInput
-    create?: NexusGenInputs['ImageCreateWithoutPostInput'] | null; // ImageCreateWithoutPostInput
-  }
-  ImageCreateOrConnectWithoutPostInput: { // input type
-    create: NexusGenInputs['ImageCreateWithoutPostInput']; // ImageCreateWithoutPostInput!
-    where: NexusGenInputs['ImageWhereUniqueInput']; // ImageWhereUniqueInput!
-  }
-  ImageCreateWithoutPostInput: { // input type
-    bytes: number; // Int!
-    createdAt: NexusGenScalars['DateTime']; // DateTime!
-    etag: string; // String!
-    format: string; // String!
-    height: number; // Int!
-    originalFilename: string; // String!
-    publicId: string; // String!
-    resourceType: string; // String!
-    secureUrl: string; // String!
-    signature: string; // String!
-    type: string; // String!
-    url: string; // String!
-    version: number; // Int!
-    width: number; // Int!
-  }
-  ImageWhereUniqueInput: { // input type
-    id?: number | null; // Int
-    publicId?: string | null; // String
-    secureUrl?: string | null; // String
-    url?: string | null; // String
-  }
-  PostCreateInput: { // input type
-    author: NexusGenInputs['UserCreateNestedOneWithoutPostsInput']; // UserCreateNestedOneWithoutPostsInput!
-    caption?: string | null; // String
-    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
-    image: NexusGenInputs['ImageCreateNestedOneWithoutPostInput']; // ImageCreateNestedOneWithoutPostInput!
-    published?: boolean | null; // Boolean
-    views?: number | null; // Int
-  }
-  PostCreateManyAuthorInput: { // input type
-    caption?: string | null; // String
-    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
-    id?: number | null; // Int
-    imagePublicId: string; // String!
-    published?: boolean | null; // Boolean
-    views?: number | null; // Int
-  }
-  PostCreateManyAuthorInputEnvelope: { // input type
-    data?: NexusGenInputs['PostCreateManyAuthorInput'][] | null; // [PostCreateManyAuthorInput!]
-    skipDuplicates?: boolean | null; // Boolean
-  }
-  PostCreateNestedManyWithoutAuthorInput: { // input type
-    connect?: NexusGenInputs['PostWhereUniqueInput'][] | null; // [PostWhereUniqueInput!]
-    connectOrCreate?: NexusGenInputs['PostCreateOrConnectWithoutAuthorInput'][] | null; // [PostCreateOrConnectWithoutAuthorInput!]
-    create?: NexusGenInputs['PostCreateWithoutAuthorInput'][] | null; // [PostCreateWithoutAuthorInput!]
-    createMany?: NexusGenInputs['PostCreateManyAuthorInputEnvelope'] | null; // PostCreateManyAuthorInputEnvelope
-  }
-  PostCreateOrConnectWithoutAuthorInput: { // input type
-    create: NexusGenInputs['PostCreateWithoutAuthorInput']; // PostCreateWithoutAuthorInput!
-    where: NexusGenInputs['PostWhereUniqueInput']; // PostWhereUniqueInput!
-  }
-  PostCreateWithoutAuthorInput: { // input type
-    caption?: string | null; // String
-    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
-    image: NexusGenInputs['ImageCreateNestedOneWithoutPostInput']; // ImageCreateNestedOneWithoutPostInput!
-    published?: boolean | null; // Boolean
-    views?: number | null; // Int
-  }
   PostWhereUniqueInput: { // input type
     id?: number | null; // Int
-  }
-  UserCreateInput: { // input type
-    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
-    email?: string | null; // String
-    emailVerified?: NexusGenScalars['DateTime'] | null; // DateTime
-    followers?: number | null; // Int
-    image?: string | null; // String
-    name: string; // String!
-    posts?: NexusGenInputs['PostCreateNestedManyWithoutAuthorInput'] | null; // PostCreateNestedManyWithoutAuthorInput
-    slug?: string | null; // String
-    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
-    views?: number | null; // Int
-  }
-  UserCreateNestedOneWithoutPostsInput: { // input type
-    connect?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
-    connectOrCreate?: NexusGenInputs['UserCreateOrConnectWithoutPostsInput'] | null; // UserCreateOrConnectWithoutPostsInput
-    create?: NexusGenInputs['UserCreateWithoutPostsInput'] | null; // UserCreateWithoutPostsInput
-  }
-  UserCreateOrConnectWithoutPostsInput: { // input type
-    create: NexusGenInputs['UserCreateWithoutPostsInput']; // UserCreateWithoutPostsInput!
-    where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
-  }
-  UserCreateWithoutPostsInput: { // input type
-    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
-    email?: string | null; // String
-    emailVerified?: NexusGenScalars['DateTime'] | null; // DateTime
-    followers?: number | null; // Int
-    image?: string | null; // String
-    name: string; // String!
-    slug?: string | null; // String
-    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
-    views?: number | null; // Int
   }
   UserUpdateInput: { // input type
     email?: string | null; // String
     emailVerified?: NexusGenScalars['DateTime'] | null; // DateTime
     image?: string | null; // String
     name?: string | null; // String
-  }
-  UserWhereUniqueInput: { // input type
-    email?: string | null; // String
-    id?: number | null; // Int
-    slug?: string | null; // String
   }
 }
 
@@ -206,8 +101,6 @@ export interface NexusGenFieldTypes {
     width: number; // Int!
   }
   Mutation: { // field return type
-    createOneUser: NexusGenRootTypes['User']; // User!
-    createPost: NexusGenRootTypes['Post'] | null; // Post
     updateUserSettings: NexusGenRootTypes['User'] | null; // User
     updateViews: NexusGenRootTypes['Post'] | null; // Post
   }
@@ -221,12 +114,7 @@ export interface NexusGenFieldTypes {
     views: number; // Int!
   }
   Query: { // field return type
-    image: NexusGenRootTypes['Image'] | null; // Image
-    images: NexusGenRootTypes['Image'][]; // [Image!]!
-    post: NexusGenRootTypes['Post'] | null; // Post
-    posts: NexusGenRootTypes['Post'][]; // [Post!]!
-    user: NexusGenRootTypes['User'] | null; // User
-    users: NexusGenRootTypes['User'][]; // [User!]!
+    ok: boolean; // Boolean!
   }
   User: { // field return type
     email: string | null; // String
@@ -255,8 +143,6 @@ export interface NexusGenFieldTypeNames {
     width: 'Int'
   }
   Mutation: { // field return type name
-    createOneUser: 'User'
-    createPost: 'Post'
     updateUserSettings: 'User'
     updateViews: 'Post'
   }
@@ -270,12 +156,7 @@ export interface NexusGenFieldTypeNames {
     views: 'Int'
   }
   Query: { // field return type name
-    image: 'Image'
-    images: 'Image'
-    post: 'Post'
-    posts: 'Post'
-    user: 'User'
-    users: 'User'
+    ok: 'Boolean'
   }
   User: { // field return type name
     email: 'String'
@@ -292,12 +173,6 @@ export interface NexusGenFieldTypeNames {
 
 export interface NexusGenArgTypes {
   Mutation: {
-    createOneUser: { // args
-      data: NexusGenInputs['UserCreateInput']; // UserCreateInput!
-    }
-    createPost: { // args
-      data?: NexusGenInputs['PostCreateInput'] | null; // PostCreateInput
-    }
     updateUserSettings: { // args
       data?: NexusGenInputs['UserUpdateInput'] | null; // UserUpdateInput
       id?: number | null; // Int
@@ -305,35 +180,6 @@ export interface NexusGenArgTypes {
     updateViews: { // args
       id?: number | null; // Int
       userId?: number | null; // Int
-    }
-  }
-  Query: {
-    image: { // args
-      where: NexusGenInputs['ImageWhereUniqueInput']; // ImageWhereUniqueInput!
-    }
-    images: { // args
-      after?: NexusGenInputs['ImageWhereUniqueInput'] | null; // ImageWhereUniqueInput
-      before?: NexusGenInputs['ImageWhereUniqueInput'] | null; // ImageWhereUniqueInput
-      first?: number | null; // Int
-      last?: number | null; // Int
-    }
-    post: { // args
-      where: NexusGenInputs['PostWhereUniqueInput']; // PostWhereUniqueInput!
-    }
-    posts: { // args
-      after?: NexusGenInputs['PostWhereUniqueInput'] | null; // PostWhereUniqueInput
-      before?: NexusGenInputs['PostWhereUniqueInput'] | null; // PostWhereUniqueInput
-      first?: number | null; // Int
-      last?: number | null; // Int
-    }
-    user: { // args
-      where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
-    }
-    users: { // args
-      after?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
-      before?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
-      first?: number | null; // Int
-      last?: number | null; // Int
     }
   }
   User: {
