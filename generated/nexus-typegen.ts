@@ -5,7 +5,6 @@
 
 
 import { Context } from "./../graphql/context"
-import { FieldShieldResolver, ObjectTypeShieldResolver } from "nexus-shield"
 
 
 declare global {
@@ -405,16 +404,8 @@ export interface NexusGenTypes {
 
 declare global {
   interface NexusGenPluginTypeConfig<TypeName extends string> {
-    /**
-     * Default authorization rule to execute on all fields of this object
-     */
-    shield?: ObjectTypeShieldResolver<TypeName>
   }
   interface NexusGenPluginFieldConfig<TypeName extends string, FieldName extends string> {
-    /**
-     * Authorization rule to execute for this field
-     */
-    shield?: FieldShieldResolver<TypeName, FieldName>
   }
   interface NexusGenPluginInputFieldConfig<TypeName extends string, FieldName extends string> {
   }

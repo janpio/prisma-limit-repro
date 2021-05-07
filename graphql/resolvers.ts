@@ -11,11 +11,11 @@ export const Query = queryType({
   }
 })
 
-const shield = {
-  resolve: async (_, args, ctx) => {
-    return !!ctx.session
-  }
-}
+// const shield = {
+//   resolve: async (_, args, ctx) => {
+//     return !!ctx.session
+//   }
+// }
 
 export const User = objectType({
   name: 'User',
@@ -29,10 +29,10 @@ export const User = objectType({
     t.model.followers()
     t.model.slug()
 
-    t.model.email({
-      shield
-    })
-    t.model.emailVerified({ shield })
+    // t.model.email({
+    //   shield
+    // })
+    // t.model.emailVerified({ shield })
   }
 })
 
@@ -87,12 +87,12 @@ export const Mutation = mutationType({
           type: 'PostCreateInput'
         })
       },
-      shield,
-      resolve: async (_, { data }, ctx) => {
-        return await ctx.prisma.post.create({
-          data
-        })
-      }
+      // shield,
+      // resolve: async (_, { data }, ctx) => {
+      //   return await ctx.prisma.post.create({
+      //     data
+      //   })
+      // }
     })
 
     t.crud.createOneUser()
