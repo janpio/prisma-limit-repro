@@ -1,15 +1,15 @@
 import { arg, inputObjectType, mutationType, objectType, queryType } from 'nexus'
 
-export const Query = queryType({
-  definition(t) {
-    t.crud.posts()
-    t.crud.post()
-    t.crud.user()
-    t.crud.images()
-    t.crud.image()
-    t.crud.users()
-  }
-})
+// export const Query = queryType({
+//   definition(t) {
+//     // t.crud.posts()
+//     // t.crud.post()
+//     // t.crud.user()
+//     // t.crud.images()
+//     // t.crud.image()
+//     // t.crud.users()
+//   }
+// })
 
 const shield = {
   resolve: async (_, args, ctx) => {
@@ -80,20 +80,20 @@ export const Mutation = mutationType({
   definition(t) {
     t.crud.createOnePost({ alias: 'createPost' })
 
-    t.field('createPost', {
-      type: 'Post',
-      args: {
-        data: arg({
-          type: 'PostCreateInput'
-        })
-      },
-      shield,
-      resolve: async (_, { data }, ctx) => {
-        return await ctx.prisma.post.create({
-          data
-        })
-      }
-    })
+    // t.field('createPost', {
+    //   type: 'Post',
+    //   args: {
+    //     data: arg({
+    //       type: 'PostCreateInput'
+    //     })
+    //   },
+    //   shield,
+    //   resolve: async (_, { data }, ctx) => {
+    //     return await ctx.prisma.post.create({
+    //       data
+    //     })
+    //   }
+    // })
 
     t.crud.createOneUser()
 
