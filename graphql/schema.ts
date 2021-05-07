@@ -1,5 +1,5 @@
 import { makeSchema } from 'nexus'
-import { nexusPrisma } from 'nexus-plugin-prisma'
+// import { nexusPrisma } from 'nexus-plugin-prisma'
 import path from 'path'
 import { Mutation, Post, Query, User, Image, UserUpdateInput } from './resolvers'
 // import { ForbiddenError } from 'apollo-server-micro'
@@ -13,10 +13,10 @@ export const schema = makeSchema({
   },
 
   plugins: [
-    nexusPrisma({
-      experimentalCRUD: true,
-      outputs: { typegen: path.join(process.cwd(), 'generated', 'typegen-nexus-plugin-prisma.d.ts') }
-    }),
+    // nexusPrisma({
+    //   experimentalCRUD: true,
+    //   outputs: { typegen: path.join(process.cwd(), 'generated', 'typegen-nexus-plugin-prisma.d.ts') }
+    // }),
     // nexusShield({
     //   defaultError: new ForbiddenError('Not allowed'),
     //   defaultRule: allow
