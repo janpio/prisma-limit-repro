@@ -31,15 +31,14 @@
     "next": "^10.2.0",
     "nexus": "^1.0.0",
     "nexus-plugin-prisma": "^0.34.1",
-    "nexus-shield": "^2.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
+    "@types/node": "latest",
+    "@types/react": "^17.0.5",
     "prisma": "^2.22.0",
     "ts-node": "^9.1.1",
-    "typescript": "^4.2.4",
-    "@types/react": "latest",
-    "@types/node": "latest"
+    "typescript": "^4.2.4"
   }
 }
