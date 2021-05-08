@@ -1,5 +1,5 @@
 import { makeSchema } from 'nexus'
-//import { nexusPrisma } from 'nexus-plugin-prisma'
+import { nexusPrisma } from 'nexus-plugin-prisma'
 import path from 'path'
 import { User } from './resolvers'
 
@@ -10,13 +10,13 @@ export const schema = makeSchema({
     export: 'Context'
   },
 
-  /*
+  /**/
   plugins: [
     nexusPrisma({
       outputs: { typegen: path.join(process.cwd(), 'generated', 'typegen-nexus-plugin-prisma.d.ts') }
     }),
   ],
-  */
+  /**/
   outputs: {
     typegen: path.join(process.cwd(), 'generated', 'nexus-typegen.ts'),
     schema: path.join(process.cwd(), 'generated', 'schema.graphql')

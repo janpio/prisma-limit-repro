@@ -1,6 +1,5 @@
 import { objectType } from 'nexus'
 
-/*
 export const User = objectType({
   name: 'User',
 
@@ -9,8 +8,8 @@ export const User = objectType({
     t.model.name()
   }
 })
-*/
 
+/*
 export const User = objectType({
   name: "User",
   definition(t) {
@@ -18,3 +17,4 @@ export const User = objectType({
     t.nonNull.string("name")
   }
 })
+*/
